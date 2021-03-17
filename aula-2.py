@@ -1,12 +1,33 @@
 from lib.controller import Supervisor
 
-def_robo = "youBot"
+def_robo = "Robo_PS_2020"
 
 supervisor = Supervisor() # criando um objeto para o supervisor do robo
 
 node = supervisor.getFromDef(def_robo) # criando uma variavel para guardar o nó referente ao robô, obtido através da DEF
 
 # dentro de cada nó existem vários Fields (Campos), que armazenam informações como rotação, posição, velocidade, torque, etc.
+
+campo_translacao = node.getField("translation")
+
+translacao = campo_translacao.getSFVec3f()
+
+# # 
+
+campo_rotacao = node.getField("rotation")
+
+rotacao = campo_rotacao.getSFRotation()
+
+# # 
+# setando translacao
+
+nova_posicao = [0.1438431444768679, 0.05172692048064219, -1.962554661281458]
+
+campo_translacao.setSFVec3f(nova_posicao)
+
+nova_rotacao = [0.015695193158022566, 0.9598369602543549, -0.893055197613302, -1.93747281062815]
+
+campo_rotacao.setSFRotation(nova_rotacao)
 
 translation_field = node.getField("translation") # salvando o Filed de translação na variável translation_field
 rotation_filed = node.getField("rotation") # salvando o Filed de rotação na variável rotation_field
